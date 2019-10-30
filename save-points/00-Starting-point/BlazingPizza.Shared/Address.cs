@@ -11,7 +11,7 @@ namespace BlazingPizza
         public string Line1 { get; set; }
 		[Required]
 		public string Line2 { get; set; }
-		[Required, MaxLength(50)]
+		[Required(ErrorMessage = "I need your City name!!!"), MaxLength(50)]
 		public string City { get; set; }
 		[Required, MaxLength(20)]
 		public string Region { get; set; }
