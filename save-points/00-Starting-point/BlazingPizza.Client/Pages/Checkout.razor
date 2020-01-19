@@ -64,6 +64,17 @@
 				NavigationManager.NavigateTo("");
 			}
 		}
+
+		_ = RequestNotificationSubscriptionAsync();
+	}
+
+	async Task RequestNotificationSubscriptionAsync()
+	{
+		var subscription = await JSRuntime.InvokeAsync<NotificationSubscription>("blazorPushNotifications.requestSubscription");
+		if (subscription != null)
+		{
+			await HttpClient.PutJsonAsync<object>("notifications/subscribe", subscription);
+		}
 	}
 
 	async Task PlaceOrder()
